@@ -18,9 +18,9 @@ phases:
       - echo "Running tests..."
       - echo "Building Docker image..."
       - echo "logging in docker hub"
-      - docker login -u "$DOCKER_REGISTRY_USERNAME" --password "$DOCKER_REGISTRY_PASSWORD" 
-      - docker build -t "https://hub.docker.com/r/dhruvdarji123/python-app" .
-      - docker push "https://hub.docker.com/r/dhruvdarji123/python-app"
+      - docker login -u "$DOCKER_REGISTRY_USERNAME" --password "$DOCKER_REGISTRY_PASSWORD" "$DOCKER_REGISTRY_URL"
+      - docker build -t "$DOCKER_REGISTRY_URL:latest" .
+      - docker push "$DOCKER_REGISTRY_URL:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
